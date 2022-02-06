@@ -1,5 +1,5 @@
 interface UserList {
-    id: number;
+    id: string;
     name: string;
     username: string;
     email: string;
@@ -24,7 +24,7 @@ interface UserList {
 
 export const usersList: UserList[] = [
     {
-        id: 1,
+        id: '1',
         name: "Leanne Graham",
         username: "Bret",
         email: "Sincere@april.biz",
@@ -47,7 +47,7 @@ export const usersList: UserList[] = [
         },
     },
     {
-        id: 2,
+        id: '2',
         name: "Ervin Howell",
         username: "Antonette",
         email: "Shanna@melissa.tv",
@@ -70,7 +70,7 @@ export const usersList: UserList[] = [
             },
         },
     {
-        id: 3,
+        id: '3',
         name: "Clementine Bauch",
         username: "Samantha",
         email: "Nathan@yesenia.net",
