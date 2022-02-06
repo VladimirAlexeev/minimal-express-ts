@@ -13,7 +13,7 @@ Run command
   > npm install
   > npm run start
 
-Build ts in js command:
+Compile TypeScript code to valid JavaScript:
   > npm run build
 
 Curl command for user delete from list:
