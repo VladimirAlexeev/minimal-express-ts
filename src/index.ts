@@ -1,31 +1,18 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-import { usersList } from './usersList';
+import { ApolloServer } from 'apollo-server-express';
+import { typeDefs, resolvers } from './graphql';
 
 // create an express application
 const app = express();
 const PORT = 9000;
 
-// apply middleware to parse incoming requests as JSON
-app.use(bodyParser.json());
+async function startServer() {
+    const server = new ApolloServer({ typeDefs, resolvers });
+    await server.start();
+    server.applyMiddleware({app, path: "/api"});
+}
 
-// create route to handle HTTP GET request
-app.get("/", (_req, res) => {
-    return res.send(usersList);
-});
-
-// create route to handle HTTP POST request
-app.post("/delete-user", (req, res) => {
-    const id: number = req.body.id;
-
-    for(let i = 0; i < usersList.length; i++) {
-        if(usersList[i].id === id) {
-            return res.send(usersList.splice(i, 1));
-        }
-    }
-
-    return res.send("Failed to delete user!");
-});
+startServer().then(() => {});
 
 // create Node server at specified port
 app.listen(PORT);
